@@ -36,7 +36,7 @@ const Signup = () => {
     setYears(yearsArray);
   }, []);
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
           <img
@@ -72,49 +72,79 @@ const Signup = () => {
 
               <div className="row">
                 <div className="col">
-                  <select
-                    name="month"
-                    id="month"
-                    className="form-control mb-3"
-                    placeholder="Month"
-                  >
-                    <option disabled >
+                  <div className="dropdown">
+                    <button
+                      className="btn btn-light dropdown-toggle drop"
+                      type="button"
+                      id="monthDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{width:"350px"}}
+                    >
                       Month
-                    </option>
-                    {months.map((month, index) => (
-                      <option key={index}>{month}</option>
-                    ))}
-                  </select>
+                    </button>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="monthDropdown"
+                    >
+                      {months.map((month, index) => (
+                        <li key={index}>
+                          <a className="dropdown-item" href="#">
+                            {month}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 <div className="col">
-                  <select
-                    name="day"
-                    id="day"
-                    className="form-control mb-3"
-                    placeholder="Day"
-                  >
-                    <option disabled >
+                  <div className="dropdown">
+                    <button
+                      className="btn btn-light dropdown-toggle drop mx-3"
+                      type="button"
+                      id="dayDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{width:"150px"}}
+                    >
                       Day
-                    </option>
-                    {days.map((day) => (
-                      <option key={day}>{day}</option>
-                    ))}
-                  </select>
+                    </button>
+                    <ul className="dropdown-menu" aria-labelledby="dayDropdown">
+                      {days.map((day, index) => (
+                        <li key={index}>
+                          <a className="dropdown-item" href="#">
+                            {day}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 <div className="col">
-                  <select
-                    name="year"
-                    id="year"
-                    className="form-control mb-3"
-                    placeholder="Year"
-                  >
-                    <option disabled >
+                  <div className="dropdown">
+                    <button
+                      className="btn btn-light dropdown-toggle drop"
+                      type="button"
+                      id="yearDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{width:"150px"}}
+                    >
                       Year
-                    </option>
-                    {years.map((year) => (
-                      <option key={year}>{year}</option>
-                    ))}
-                  </select>
+                    </button>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="yearDropdown"
+                    >
+                      {years.map((year, index) => (
+                        <li key={index}>
+                          <a className="dropdown-item" href="#">
+                            {year}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
