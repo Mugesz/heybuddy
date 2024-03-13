@@ -30,18 +30,13 @@ const Login = () => {
                   placeholder="Password"
                 />
               </div>
-              <button
-                type="submit"
-                className=" container btn btn-primary mt-3 hight-signup br"
-              >
+              <button className=" container btn btn-primary mt-3 hight-signup br">
                 Login
               </button>
             </form>
 
             <div className="d-flex justify-content-between mt-3">
-              <Link  className="btn text-info">
-               forget password?
-              </Link>
+              <Link className="btn text-info">forget password?</Link>
               <Link to="/signup" className="btn text-info">
                 Signup to Twitter
               </Link>
