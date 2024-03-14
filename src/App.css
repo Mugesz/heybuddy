@@ -48,3 +48,8 @@
   border: 1px solid black;
   color: rgb(158, 156, 156);
 }
+
+.day-dropdown, .year-dropdown {
+  max-height: 200px !important; /* Adjust the max height as needed */
+  overflow-y: auto !important;
+}

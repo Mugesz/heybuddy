@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Signup = () => {
+  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+
   const [days, setDays] = useState([]);
   const [months, setMonths] = useState([]);
   const [years, setYears] = useState([]);
+
   useEffect(() => {
     const generateRange = (start, end) => {
       return Array.from({ length: end - start + 1 }, (_, i) => start + i);
@@ -32,9 +35,21 @@ const Signup = () => {
     setMonths(monthsArray);
 
     const currentYear = new Date().getFullYear();
-    const yearsArray = generateRange(currentYear - 100, currentYear);
+    const yearsArray = generateRange(currentYear - 50, currentYear);
     setYears(yearsArray);
   }, []);
+
+  const handleDaySelect = (day) => {
+    setSelectedDay(day);
+  };
+
+  const handleMonthSelect = (month) => {
+    setSelectedMonth(month);
+  };
+
+  const handleYearSelect = (year) => {
+    setSelectedYear(year);
+  };
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
@@ -79,9 +94,9 @@ const Signup = () => {
                       id="monthDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      style={{width:"350px"}}
+                      style={{ width: "350px" }}
                     >
-                      Month
+                      {selectedMonth || "Month"}
                     </button>
                     <ul
                       className="dropdown-menu"
@@ -89,14 +104,19 @@ const Signup = () => {
                     >
                       {months.map((month, index) => (
                         <li key={index}>
-                          <a className="dropdown-item" href="#">
+                          <button
+                            className="dropdown-item"
+                            type="button"
+                            onClick={() => handleMonthSelect(month)}
+                          >
                             {month}
-                          </a>
+                          </button>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
+
                 <div className="col">
                   <div className="dropdown">
                     <button
@@ -105,21 +125,29 @@ const Signup = () => {
                       id="dayDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      style={{width:"150px"}}
+                      style={{ width: "150px" }}
                     >
-                      Day
+                      {selectedDay || "Day"}
                     </button>
-                    <ul className="dropdown-menu" aria-labelledby="dayDropdown">
+                    <ul
+                      className="dropdown-menu day-dropdown"
+                      aria-labelledby="dayDropdown"
+                    >
                       {days.map((day, index) => (
                         <li key={index}>
-                          <a className="dropdown-item" href="#">
+                          <button
+                            className="dropdown-item"
+                            type="button"
+                            onClick={() => handleDaySelect(day)}
+                          >
                             {day}
-                          </a>
+                          </button>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
+
                 <div className="col">
                   <div className="dropdown">
                     <button
@@ -128,19 +156,23 @@ const Signup = () => {
                       id="yearDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      style={{width:"150px"}}
+                      style={{ width: "150px" }}
                     >
-                      Year
+                      {selectedYear || "Year"}
                     </button>
                     <ul
-                      className="dropdown-menu"
+                      className="dropdown-menu year-dropdown"
                       aria-labelledby="yearDropdown"
                     >
                       {years.map((year, index) => (
                         <li key={index}>
-                          <a className="dropdown-item" href="#">
+                          <button
+                            className="dropdown-item"
+                            type="button"
+                            onClick={() => handleYearSelect(year)}
+                          >
                             {year}
-                          </a>
+                          </button>
                         </li>
                       ))}
                     </ul>
@@ -149,16 +181,15 @@ const Signup = () => {
               </div>
             </div>
           </form>
-          
-        <Link to={"/login"}>
-          <button className=" container btn btn-info rounded-full mt-5">Next</button>
-        </Link>
-      </div>
+
+          <Link to={"/login"}>
+            <button className=" container btn btn-info rounded-full mt-5">
+              Next
+            </button>
+          </Link>
         </div>
       </div>
-
-     
-    
+    </div>
   );
 };
 
