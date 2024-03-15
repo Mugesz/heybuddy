@@ -50,6 +50,13 @@
 }
 
 .day-dropdown, .year-dropdown {
-  max-height: 200px !important; /* Adjust the max height as needed */
+  max-height: 200px !important;
   overflow-y: auto !important;
 }
+
+@media screen and (max-width:770px) {
+  .bottom{
+    width: 10px;
+  }
+}
+
